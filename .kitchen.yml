@@ -1,0 +1,20 @@
+---
+driver_plugin: docker
+
+driver_config:
+  socket: <%= ENV['DOCKER_HOST'] || 'unix:///var/run/docker.sock' %>
+
+provisioner:
+  name: chef_zero
+
+platforms:
+- name: ubuntu-12.04
+
+suites:
+- name: default
+  run_list:
+    - recipe[rabbitmq_with_conjur]
+  attributes:
+    rabbitmq:
+      default_user: ENV['rabbitmq_username']
+      default_pass: ENV['rabbitmq_password']

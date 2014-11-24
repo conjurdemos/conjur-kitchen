@@ -1,0 +1,2 @@
+rabbitmq_username: !var webinar-example/rabbitmq/username
+rabbitmq_password: !var webinar-example/rabbitmq/password
