@@ -16,5 +16,5 @@ suites:
     - recipe[rabbitmq_with_conjur]
   attributes:
     rabbitmq:
-      default_user: ENV['rabbitmq_username']
-      default_pass: ENV['rabbitmq_password']
+      default_user: <%= ENV['RABBITMQ_USERNAME'] %>
+      default_pass: <%= ENV['RABBITMQ_PASSWORD'] %>

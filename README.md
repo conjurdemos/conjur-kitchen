@@ -13,6 +13,8 @@ Where `rabbitmq_username` is the environment variable that will be set in the co
 of the `conjur env run` command and `!var webinar-example/rabbitmq/username` is a
 mapping to the variable id stored in conjur.
 
+**Note** When the environment variable is exported it will be uppercase, `RABBITMQ_USERNAME`.
+
 Then in our `kitchen.yml` file we use those environment variables to pass node attributes
 to the rabbitmq cookbook.
 
@@ -22,4 +24,6 @@ To run:
 
 `conjur env run -- kitchen converge` to converge the node, with secret values passed in at runtime.
 
-`conjur env run -- kitchen verify` to ensure default passwords have been overwritten. **TODO**
+`conjur env run -- kitchen verify` to ensure default passwords have been overwritten.
+
+The test checks that rabbitmq default username and password are no longer `guest:guest`.
