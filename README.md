@@ -45,6 +45,9 @@ conjur variable create -v <password> webinar-example/rabbitmq/password
 
 where `<username>` and `<password>` are the secret values you provide.
 
+For a non-demo scenario, you would also use `--as-group` option to specify the appropriate
+ownership for the secrets (e.g. `v1/developers` or `v1/ops`).
+
 ## Running the example
 
 To run:
