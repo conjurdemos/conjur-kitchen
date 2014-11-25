@@ -1,4 +1,4 @@
-# rabbitmq_with_conjur
+# conjur-kitchen
 
 This is an example cookbook, showing how to pass secrets to test-kitchen via conjur.
 
@@ -18,6 +18,35 @@ mapping to the variable id stored in conjur.
 Then in our `kitchen.yml` file we use those environment variables to pass node attributes
 to the rabbitmq cookbook.
 
+```
+conjur env run => environment variables => test-kitchen
+```
+
+This flow can be used for any tool that can use environment variables.
+
+## Setup
+
+### Tools
+
+Install the [conjur CLI](http://developer.conjur.net/setup/client_install/cli.html).
+
+Install [ChefDK](https://downloads.getchef.com/chef-dk/) and activate it with: `chef shell-init <bash|zsh>`.
+
+`gem install kitchen-docker` to get the test-kitchen docker driver.
+
+### Secrets
+
+Create the 2 secrets via the conjur CLI:
+
+```
+conjur variable create -v <username> webinar-example/rabbitmq/username
+conjur variable create -v <password> webinar-example/rabbitmq/password
+```
+
+where `<username>` and `<password>` are the secret values you provide.
+
+## Running the example
+
 To run:
 
 `conjur env check` to make sure our secrets are available.
@@ -27,3 +56,5 @@ To run:
 `conjur env run -- kitchen verify` to ensure default passwords have been overwritten.
 
 The test checks that rabbitmq default username and password are no longer `guest:guest`.
+
+When you're done, destroy the container with `kitchen destroy`.
