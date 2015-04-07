@@ -2,6 +2,8 @@
 
 This is an example cookbook, showing how to pass secrets to test-kitchen via conjur.
 
+This demo is also described in the blog post [Infrastructure as Code - Don’t Let Security Slow You Down](http://blog.conjur.net/infrastructure-as-code-dont-let-security-slow-you-down).
+
 We define the secrets we need in the `.conjurenv` file, like so:
 
 ```
